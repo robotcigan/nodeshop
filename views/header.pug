@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+html(lang="en")
+head
+  meta(charset="UTF-8")
+  title Document
+  link(rel="stylesheet" href="/css/bootstrap.min.css")
+body
+
+  nav.navbar.navbar-expand-lg.navbar-light.bg-light.mb-5
+    .container
+      a.navbar-brand(href='#') Navbar
+      button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      #navbarSupportedContent.collapse.navbar-collapse
+        ul.navbar-nav.mr-auto
+          li.nav-item.dropdown
+            a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+              | Каталог
+            .dropdown-menu(aria-labelledby='navbarDropdown')
+              a.dropdown-item(href='#') Action
+              a.dropdown-item(href='#') Another action
+              .dropdown-divider
+              a.dropdown-item(href='#') Something else here
+          li.nav-item.active
+            a.nav-link(href='/catalog')
+              | Каталог
+              span.sr-only (current)
+          li.nav-item
+            a.nav-link(href='#') Link
+          li.nav-item
+            a.nav-link.disabled(href='#', tabindex='-1', aria-disabled='true') Disabled
+        form(action="/search").form-inline.my-2.my-lg-0
+          input.form-control.mr-sm-2(id="search" name="q" type='search', placeholder='Поиск', aria-label='Search')
+          //- button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Найти
+          input(id="search" type="submit" value="Найти").btn.btn-outline-success.my-2.my-sm-0
+        ul.navbar-nav.mr-auto
+          li.nav-item.my-2.my-lg-0
+            a.nav-link(href='#')
+              | Корзина
+              span.badge.badge-primary 9

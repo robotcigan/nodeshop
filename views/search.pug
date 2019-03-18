@@ -1,0 +1,17 @@
+include header.pug
+
+.container
+  h1 Результаты поиска
+  
+  .container
+    each card, index in cards
+      .col-6
+        .card.mb-3
+          span.d-none #{card._id}
+          img.card-img-top(src=card.img, alt='...')
+          .card-body
+            h5.card-title #{card.name}
+            p.card-text #{card.price}
+            a.btn.btn-primary(href='#') В корзину
+
+include footer.pug
