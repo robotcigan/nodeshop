@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const cartRoute = require('./cart.route.js');
 const cardService = require('../services/card.service');
 const categoryService = require('../services/category.service');
 
@@ -70,7 +71,6 @@ router.get('/search?q=:name', (req, res, next) => {
     })
 });
 
-
 // show one card by id
 router.get('/catalog/:category/:id', (req, res, next) => {
   cardService.findCardById(req.params.id)
@@ -79,5 +79,8 @@ router.get('/catalog/:category/:id', (req, res, next) => {
     })
     .catch(err => next(err));
 });
+
+// cart route
+cartRoute;
 
 module.exports = router;

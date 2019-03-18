@@ -1,27 +1,26 @@
-include header.pug
+extends header.pug
 
-.container
-  h1 Каталог
-  
-  .container
-    .row
-      .col-4
-        h5 Категории моделей
-        .list-group
-          a(href='/catalog').list-group-item.list-group-item-action Все категории
-          each category, index in categories
-            a(href='/catalog/' + category.category class=category.category === activeCategory ? 'active' : '').list-group-item.list-group-item-action #{category.name}
-      .col-8
-        .row
-          each card, index in cards
-            .col-6
-              .card.mb-3
-                //- span.d-none #{card._id}
-                img.card-img-top(src=card.img, alt='...')
-                .card-body
-                  h5.card-title
-                    a(href='/catalog/' + card.category + '/' + card._id) #{card.name}
-                  p.card-text #{card.price} руб.
-                  a.btn.btn-primary(href='#') В корзину
-
-include footer.pug
+block content
+  section.container
+    h1 Каталог
+    
+    .container
+      .row
+        .col-4
+          h5 Категории моделей
+          .list-group
+            a(href='/catalog').list-group-item.list-group-item-action Все категории
+            each category, index in categories
+              a(href='/catalog/' + category.category class=category.category === activeCategory ? 'active' : '').list-group-item.list-group-item-action #{category.name}
+        .col-8
+          .row
+            each card, index in cards
+              .col-6
+                .card.mb-3
+                  //- span.d-none #{card._id}
+                  img.card-img-top(src=card.img, alt='...')
+                  .card-body
+                    h5.card-title
+                      a(href='/catalog/' + card.category + '/' + card._id) #{card.name}
+                    p.card-text #{card.price} руб.
+                    a.btn.btn-primary(href='#' v-on:click="addToCart") В корзину

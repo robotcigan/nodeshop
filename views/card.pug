@@ -1,12 +1,11 @@
-include header.pug
+extends header.pug
 
-.container
-  .row
-    .col-6
-      img.card-img-top(src=card.img, alt='...')
-    .col-6
-      h1 #{card.name}
-      p.card-text #{card.price} руб.
-      a.btn.btn-primary(href='#') В корзину
-
-include footer.pug
+block content
+  .container
+    .row
+      .col-6
+        img.card-img-top(src=card.img, alt='...')
+      .col-6
+        h1 #{card.name}
+        p.card-text #{card.price} руб.
+        a.btn.btn-primary(href='#') В корзину
