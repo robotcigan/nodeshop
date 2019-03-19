@@ -1,3 +1,4 @@
+const _ = require('lodash');
 const router = require('express').Router();
 const cartRoute = require('./cart.route.js');
 const cardService = require('../services/card.service');
@@ -20,14 +21,13 @@ router.get('/catalog', (req, res, next) => {
       return categories
     })
     .catch(err => next(err));
-  let cartCookies = res.cookie('cart cookies', 'express');
+  
   Promise.all([
     getCards,
-    getCategories,
-    cartCookies
+    getCategories
   ])
     .then(results => {
-      res.render('catalog', {cards: results[0], categories: results[1], cartCookies});
+      res.render('catalog', {cards: results[0], categories: results[1]});
     })
 });
 
@@ -62,7 +62,7 @@ router.get('/search?q=:name', (req, res, next) => {
     })
     .catch(err => next(err));
   Promise.all([
-    getCardsBySearch,
+    getCardsBySearch
   ])
     .then(results => {
       res.render('search', {
@@ -73,14 +73,31 @@ router.get('/search?q=:name', (req, res, next) => {
 
 // show one card by id
 router.get('/catalog/:category/:id', (req, res, next) => {
-  cardService.findCardById(req.params.id)
+  let getCardById = cardService.findCardById(req.params.id)
     .then(card => {
-      res.render('card', {card: card});
+      return card
     })
     .catch(err => next(err));
+  let getSimilarCards = cardService.findCardsByCategory(req.params.category)
+    .then(similars => {
+      let similarsRejectCurrentCard = _.reject(similars, {'id': req.params.id})
+      return similarsRejectCurrentCard
+    })
+    .catch(err => next(err));
+
+  Promise.all([
+    getCardById,
+    getSimilarCards
+  ])
+    .then(results => {
+      res.render('card', {
+        card: results[0],
+        similars: results[1]
+      })
+    })
 });
 
 // cart route
-cartRoute;
+router.use(cartRoute);
 
 module.exports = router;

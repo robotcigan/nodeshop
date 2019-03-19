@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const session = require('express-session')
 const router = require('./routes/main.route');
 const connection = require('./services/connection.service');
 
@@ -15,6 +16,8 @@ app.use((req, res, next) => {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser());
+
+app.use(session({secret: "Shh, its a secret!"}));
 
 app.set('view engine', 'pug');
 app.use(express.static('public'));

@@ -9,3 +9,17 @@ block content
         h1 #{card.name}
         p.card-text #{card.price} руб.
         a.btn.btn-primary(href='#') В корзину
+    
+    .mb-5
+    
+    h2 Похожие товары
+    .row.simillar
+      each similar, index in similars
+        .col-4
+          .card.mb-3
+            img.card-img-top(src=similar.img, alt='...')
+            .card-body
+              h5.card-title
+                a(href='/catalog/' + similar.category + '/' + similar._id) #{similar.name}
+              p.card-text #{similar.price} руб.
+              a.btn.btn-primary(href='#' v-on:click="addToCart") В корзину
