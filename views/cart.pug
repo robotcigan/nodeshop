@@ -1,0 +1,41 @@
+extends header.pug
+
+block content
+  section.container
+    h1 Корзина
+    hr
+
+    .container
+      .row
+        .col-9
+          .row
+            .col-2
+              img(src="./img/2a850a04b595773bdbcb548342cc65c2.jpg", alt="").img-thumbnail
+            .col-4
+              a(href="") Nissan Silvia S13 Ks Aero 1996 Red
+            .col-3
+              .btn-group(role='group' aria-label='Basic example')
+                button.btn.btn-light(type='button') -
+                button.btn.btn-light(type='button') 5
+                button.btn.btn-light(type='button') +
+            .col-3
+              h5 4 500 руб.
+          hr
+          each cartItem, index in cartItems
+            .row
+              .col-2
+                img(src="./img/" + cartItem.img, alt="").img-thumbnail
+              .col-4
+                a(href="") #{cartItem.id}
+              .col-3
+                .btn-group(role='group' aria-label='Basic example')
+                  button.btn.btn-light(type='button') -
+                  button.btn.btn-light(type='button') 5
+                  button.btn.btn-light(type='button') +
+              .col-3
+                h5 #{cartItem.price} руб.
+            hr
+
+        .col-3.col-offset-1
+          h5 Итого
+

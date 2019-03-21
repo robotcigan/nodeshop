@@ -18,9 +18,10 @@ block content
               .col-6
                 .card.mb-3
                   //- span.d-none #{card._id}
-                  img.card-img-top(src=card.img, alt='...')
+                  input(v-model="cardId" value=card.id).d-none
+                  img.card-img-top(src='/img/' + card.img, alt='...')
                   .card-body
                     h5.card-title
                       a(href='/catalog/' + card.category + '/' + card._id) #{card.name}
                     p.card-text #{card.price} руб.
-                    a.btn.btn-primary(href='#' v-on:click="addToCart") В корзину
+                    a.btn.btn-primary(href='#' data-cardId=card.id v-on:click="addToCart") В корзину

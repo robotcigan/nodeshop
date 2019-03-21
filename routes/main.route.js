@@ -29,6 +29,13 @@ router.get('/catalog', (req, res, next) => {
     .then(results => {
       res.render('catalog', {cards: results[0], categories: results[1]});
     })
+
+  // if (req.session.cardCount) {
+  //   req.session.views++
+  // } else {
+  //   req.session.views = 0;
+  // }
+
 });
 
 router.get('/catalog/:name', (req, res, next) => {

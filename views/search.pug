@@ -9,7 +9,7 @@ block content
         .col-6
           .card.mb-3
             span.d-none #{card._id}
-            img.card-img-top(src=card.img, alt='...')
+            img.card-img-top(src='/img/' + card.img, alt='...')
             .card-body
               h5.card-title #{card.name}
               p.card-text #{card.price}

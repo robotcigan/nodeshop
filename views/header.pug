@@ -37,9 +37,9 @@ body
             input(id="search" type="submit" value="Найти").btn.btn-outline-success.my-2.my-sm-0
           ul.navbar-nav.mr-auto
             li.nav-item.my-2.my-lg-0
-              a.nav-link(href='#')
+              a.nav-link(href='/cart')
                 | Корзина
-                span.badge.badge-primary 9
+                span.badge.badge-primary {{cartCount}}
     
     block content
 
@@ -47,8 +47,8 @@ body
       .container
         p this is footer
 
-  script(src="./js/jquery.min.js")
-  script(src="./js/axios.min.js")
-  script(src="./js/vue.js")
-  script(src="./js/bootstrap.min.js")
-  script(src="./js/main.js")
+  script(src="/js/jquery.min.js")
+  script(src="/js/axios.min.js")
+  script(src="/js/vue.js")
+  script(src="/js/bootstrap.min.js")
+  script(src="/js/main.js")
